@@ -1,6 +1,6 @@
 var userFormEl = document.querySelector("#user-form");
 var languageButtonsEl = document.querySelector("#language-buttons");
-var nameInputEl = document.querySelector("#username");
+var cityInputEl = document.querySelector("#city");
 var repoContainerEl = document.querySelector("#repos-container");
 var repoSearchTerm = document.querySelector("#repo-search-term");
 
@@ -9,16 +9,16 @@ var formSubmitHandler = function(event) {
   event.preventDefault();
 
   // get value from input element
-  var username = nameInputEl.value.trim();
+  var city = cityInputEl.value.trim();
 
-  if (username) {
-    getUserRepos(username);
+  if (city) {
+    getrepo(city);
 
     // clear old content
     repoContainerEl.textContent = "";
-    nameInputEl.value = "";
+    cityInputEl.value = "";
   } else {
-    alert("Please enter a GitHub username");
+    alert("Please enter a city below");
   }
 };
 
@@ -34,9 +34,9 @@ var buttonClickHandler = function(event) {
   }
 };
 
-var getUserRepos = function(user) {
+var getweatherRepo = function(user) {
   // format the github api url
-  var apiUrl = "https://openweathermap.org/api/one-call-api" + user + "/repos";
+  var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid={API key}";
 
   // make a get request to url
   fetch(apiUrl)
@@ -46,7 +46,7 @@ var getUserRepos = function(user) {
         console.log(response);
         response.json().then(function(data) {
           console.log(data);
-          displayRepos(data, user);
+          displayRepo(data, user);
         });
       } else {
         alert("Error: " + response.statusText);
