@@ -1,125 +1,29 @@
-var userFormEl = document.querySelector("#user-form");
-var languageButtonsEl = document.querySelector("#language-buttons");
-var cityInputEl = document.querySelector("#city");
-var repoContainerEl = document.querySelector("#repos-container");
-var repoSearchTerm = document.querySelector("#repo-search-term");
+var searchInput = document.getElementById("city")
+var apiKey = "049bec33df8fdbc63240a744ec8c1088"
+var lon; 
+var lat;
+var searchHistory = JSON.parse(localStorage.getItem("recentCities")) || []
+// push the city searched into searchHistory, then put Search History back in localstorage with localStorage.setItem("RecentCities", searchHistory)
+function fetchCoords(search) {
+  var apiUrl1 = "http://api.openweathermap.org/geo/1.0/direct?q=Dallas&appid=" + apiKey
+  fetch(apiUrl1)
+  .then(function (response) {
+    return response.json()
+  }).then(function(data) {
+    lat = data[0].lat
+    lon = data[0].lon
+    getWeather()
+  })
+}
+fetchCoords("Dallas")
 
-var formSubmitHandler = function(event) {
-  // prevent page from refreshing
-  event.preventDefault();
-
-  // get value from input element
-  var city = cityInputEl.value.trim();
-
-  if (city) {
-    getrepo(city);
-
-    // clear old content
-    repoContainerEl.textContent = "";
-    cityInputEl.value = "";
-  } else {
-    alert("Please enter a city below");
-  }
-};
-
-var buttonClickHandler = function(event) {
-  // get the language attribute from the clicked element
-  var language = event.target.getAttribute("data-language");
-
-  if (language) {
-    getFeaturedRepos(language);
-
-    // clear old content
-    repoContainerEl.textContent = "";
-  }
-};
-
-var getweatherRepo = function(user) {
-  // format the github api url
-  var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid={API key}";
-
-  // make a get request to url
+function getWeather() {
+  var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+ lat + "&lon="+ lon + "&exclude={part}&appid=" + apiKey
   fetch(apiUrl)
-    .then(function(response) {
-      // request was successful
-      if (response.ok) {
-        console.log(response);
-        response.json().then(function(data) {
-          console.log(data);
-          displayRepo(data, user);
-        });
-      } else {
-        alert("Error: " + response.statusText);
-      }
-    })
-    .catch(function(error) {
-      alert("Unable to connect to GitHub");
-    });
-};
+  .then(function(response) {
+   return response.json()
+  }).then(function(data) {
+    console.log(data)
+  })
+}
 
-var getFeaturedRepos = function(language) {
-  // format the github api url
-  var apiUrl = "https://api.github.com/search/repositories?q=" + language + "+is:featured&sort=help-wanted-issues";
-
-  // make a get request to url
-  fetch(apiUrl).then(function(response) {
-    // request was successful
-    if (response.ok) {
-      response.json().then(function(data) {
-        displayRepos(data.items, language);
-      });
-    } else {
-      alert("Error: " + response.statusText);
-    }
-  });
-};
-
-var displayRepos = function(repos, searchTerm) {
-  // check if api returned any repos
-  if (repos.length === 0) {
-    repoContainerEl.textContent = "No repositories found.";
-    return;
-  }
-
-  repoSearchTerm.textContent = searchTerm;
-
-  // loop over repos
-  for (var i = 0; i < repos.length; i++) {
-    // format repo name
-    var repoName = repos[i].owner.login + "/" + repos[i].name;
-
-    // create a link for each repo
-    var repoEl = document.createElement("a");
-    repoEl.classList = "list-item flex-row justify-space-between align-center";
-    repoEl.setAttribute("href", "./single-repo.html?repo=" + repoName);
-
-    // create a span element to hold repository name
-    var titleEl = document.createElement("span");
-    titleEl.textContent = repoName;
-
-    // append to container
-    repoEl.appendChild(titleEl);
-
-    // create a status element
-    var statusEl = document.createElement("span");
-    statusEl.classList = "flex-row align-center";
-
-    // check if current repo has issues or not
-    if (repos[i].open_issues_count > 0) {
-      statusEl.innerHTML =
-        "<i class='fas fa-times status-icon icon-danger'></i>" + repos[i].open_issues_count + " issue(s)";
-    } else {
-      statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
-    }
-
-    // append to container
-    repoEl.appendChild(statusEl);
-
-    // append container to the dom
-    repoContainerEl.appendChild(repoEl);
-  }
-};
-
-// add event listeners to form and button container
-userFormEl.addEventListener("submit", formSubmitHandler);
-languageButtonsEl.addEventListener("click", buttonClickHandler);
