@@ -12,6 +12,7 @@ function fetchCoords(search) {
   .then(function (response) {
     return response.json()
   }).then(function(data) {
+    console.log(data)
     lat = data[0].lat
     lon = data[0].lon
     getWeather()
@@ -24,7 +25,7 @@ function getWeather() {
   .then(function(response) {
    return response.json()
   }).then(function(data) {
-//document.getElementById("city").textContent="" + data.city.name;
+//document.getElementById("city").textContent="" + [0].name;
 document.getElementById("date").textContent="Date: " + new Date(data.current.dt);
 document.getElementById("temp").textContent="Temperature: " + data.current.temp + " °F";
 document.getElementById("wind").textContent="Wind Speed: " + data.current.wind_speed + " MPH";
