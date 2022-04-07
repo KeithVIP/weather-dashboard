@@ -25,7 +25,7 @@
         <h1 class="card-header">Search for a City:</h1>
         <form id="user-form" class="card-body">
           <input name="city" id="city" type="text" autofocus="true" class="form-input" />
-          <button type="submit" class="btn-1">Search</button>
+          <button type="submit" id="searchButton" class="btn-1">Search</button>
         </form>
       </div>
 
@@ -45,9 +45,18 @@
     </div>
 
     <div class="col-12 col-md-8 card-three">
-      <h2 class="subtitle">Text <span id="repo-search-term"></span></h2>
-      <div id="repos-container" class="list-group">
-
+      <div id="weather-container" class="list-group">
+        <div id="city"></div><p>
+        </p>
+        <div id="date"></div><p>
+        </p>
+        <div id="temp"></div><p>
+        </p>
+        <div id="wind"></div><p>
+        </p>
+        <div id="humidity"></div><p>
+        </p>
+        <div id="UV-Index"></div>
       </div>
     </div>
   </main>

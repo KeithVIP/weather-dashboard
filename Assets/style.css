@@ -130,8 +130,10 @@ main {
 }
 
 .list-group {
-  padding: 0;
-  list-style: none;
+margin-left: 10px;
+  font-size: 1.7rem;
+  padding: 2 10px;
+  display: inline-block;
 }
 
 .list-item {
@@ -141,25 +143,6 @@ main {
   background-color: var(--grey);
   color: var(--primary);
   text-decoration: none;
-}
-
-.list-item:hover {
-  background-color: var(--dark);
-}
-
-.status-icon {
-  padding: 2px 5px;
-  margin: 0 5px;
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: var(--border-radius);
-}
-
-.icon-danger {
-  color: rgb(255, 70, 70);
-}
-
-.icon-success {
-  color: rgb(29, 153, 255);
 }
 
 /* CARDS */
@@ -173,9 +156,9 @@ main {
 }
 
 .card-three {
-    margin: 0 0 20px 0;
-    border: 3px solid var(--secondary);
-    border-radius: var(--border-radius);
+  margin: 0 0 20px 0;
+  border: 3px solid var(--secondary);
+  border-radius: var(--border-radius);
 }
 
 .card-header {
