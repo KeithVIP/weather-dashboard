@@ -177,10 +177,20 @@ main {
 }
 
 .weather-card {
-  margin-left: 600px;
   background-color: var(--tertiary);
-
+  color: var(--secondary);
+  padding: 3%;
+  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
+
+
+.weather-card-two {
+  background-color: var(--tertiary);
+  color: var(--secondary);
+  padding: 3%;
+  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
+}
+
 
 /* FORM */
 .form-input,
