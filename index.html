@@ -9,13 +9,13 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-  <link rel="stylesheet" href="./Assets/style.css" />
+  <link rel="stylesheet" href="./Assets/style.css"/>
   <title>Weather Dashboard</title>
 </head>
 
 <body class="flex-column min-100-vh">
   <header class="hero">
-    <h1 class="app-title"> Weather Dashboard</h1>
+    <h1 class="app-title">Weather Dashboard</h1>
   </header>
 
 
@@ -46,8 +46,8 @@
 
     <div class="col-12 col-md-8 card-three">
       <div id="weather-container" class="list-group">
-        <div id="city"></div><p>
-        </p>
+        <div id="location"></div><P>
+        </P>
         <div id="date"></div><p>
         </p>
         <div id="temp"></div><p>
@@ -56,9 +56,16 @@
         </p>
         <div id="humidity"></div><p>
         </p>
-        <div id="UV-Index"></div>
+        <div id="UV-Index" class="UV-Index"></div>
       </div>
     </div>
+
+    <div class="weather-card">
+      <h3 class="card-header text-uppercase">5 Day Forecast:</h3>
+      <div id="day" class="card-body">
+      </div>
+    </div>
+  </div>
   </main>
 
   <script src="./Assets/dashboard.js"></script>

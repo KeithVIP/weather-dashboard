@@ -3,6 +3,7 @@
   --secondary: #000000;
   --tertiary: hsl(213, 100%, 62%);
   --grey: #999999;
+  --green: #32d92d;
   --border-radius: 0.3rem;
 }
 
@@ -130,17 +131,20 @@ main {
 }
 
 .list-group {
-margin-left: 10px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
   font-size: 1.7rem;
   padding: 2 10px;
   display: inline-block;
 }
 
-.list-item {
+.UV-Index {
   margin-bottom: 10px;
+  margin-right: 10px;
   padding: 1.5%;
   border-radius: var(--border-radius);
-  background-color: var(--grey);
+  background-color: var(--green);
   color: var(--primary);
   text-decoration: none;
 }
@@ -170,6 +174,12 @@ margin-left: 10px;
 
 .card-body {
   padding: 2.5%;
+}
+
+.weather-card {
+  margin-left: 600px;
+  background-color: var(--tertiary);
+
 }
 
 /* FORM */
