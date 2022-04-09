@@ -36,6 +36,7 @@ document.getElementById("UV-Index").textContent="UV-Index: " + data.current.uvi;
   })
 }
 
+
 function getDays() {
     var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+ lat + "&lon="+ lon +  "&units=imperial&appid=" + apiKey
     fetch(apiUrl)
@@ -43,40 +44,41 @@ function getDays() {
      return response.json()
     }).then(function(data) {
         console.log(data)
-  document.getElementById("monday-date").textContent="Date: " + now;
+  document.getElementById("monday-date").textContent="Date: " + mon;
   document.getElementById("monday-temp").textContent="Temperature: " + data.daily[1].temp.day + " °F";
   document.getElementById("monday-wind").textContent="Wind Speed: " + data.daily[1].wind_speed + " MPH";
   document.getElementById("monday-humidity").textContent="Humidity: " + data.daily[1].humidity + " %";
-  document.getElementById("tuesday-date").textContent="Date: " + now;
+  document.getElementById("tuesday-date").textContent="Date: " + tues;
   document.getElementById("tuesday-temp").textContent="Temperature: " + data.daily[2].temp.day + " °F";
   document.getElementById("tuesday-wind").textContent="Wind Speed: " + data.daily[2].wind_speed + " MPH";
   document.getElementById("tuesday-humidity").textContent="Humidity: " + data.daily[2].humidity + " %";
-  document.getElementById("wednesday-date").textContent="Date: " + now;
+  document.getElementById("wednesday-date").textContent="Date: " + weds;
   document.getElementById("wednesday-temp").textContent="Temperature: " + data.daily[3].temp.day + " °F";
   document.getElementById("wednesday-wind").textContent="Wind Speed: " + data.daily[3].wind_speed + " MPH";
   document.getElementById("wednesday-humidity").textContent="Humidity: " + data.daily[3].humidity + " %";
-  document.getElementById("thursday-date").textContent="Date: " + now;
+  document.getElementById("thursday-date").textContent="Date: " + thurs;
   document.getElementById("thursday-temp").textContent="Temperature: " + data.daily[4].temp.day + " °F";
   document.getElementById("thursday-wind").textContent="Wind Speed: " + data.daily[4].wind_speed + " MPH";
   document.getElementById("thursday-humidity").textContent="Humidity: " + data.daily[4].humidity + " %";
-  document.getElementById("friday-date").textContent="Date: " + now;
+  document.getElementById("friday-date").textContent="Date: " + fri;
   document.getElementById("friday-temp").textContent="Temperature: " + data.daily[5].temp.day + " °F";
   document.getElementById("friday-wind").textContent="Wind Speed: " + data.daily[5].wind_speed + " MPH";
   document.getElementById("friday-humidity").textContent="Humidity: " + data.daily[5].humidity + " %";
     })
   }
 
-  //tried writing for loop with no success 
 
   var now = moment().format("(MM/DD/YYYY)");
-  //var date = moment().format("(MM/DD/YYYY)");
-  //var mon = moment().add(3, 'days').format("(MM/DD/YYYY)");
-  //var tues = moment().add(4, 'days').format("(MM/DD/YYYY)");
-  //var weds = moment().add(5, 'days').format("(MM/DD/YYYY)");
-  //var thurs = moment().add(6, 'days').format("(MM/DD/YYYY)");
-  //var fri = moment().add(7, 'days').format("(MM/DD/YYYY)");
+  var mon = moment().add(1, 'days').format("(MM/DD/YYYY)");
+  var tues = moment().add(2, 'days').format("(MM/DD/YYYY)");
+  var weds = moment().add(3, 'days').format("(MM/DD/YYYY)");
+  var thurs = moment().add(4, 'days').format("(MM/DD/YYYY)");
+  var fri = moment().add(5, 'days').format("(MM/DD/YYYY)");
 
 document.getElementById("searchButton").addEventListener("click", function(event) {
     event.preventDefault();
     fetchCoords(searchInput.value)
+
+    
+    
 });
