@@ -153,6 +153,11 @@ main {
 .card {
   margin: 0 0 15px 0;
   border-bottom: 3px solid var(--secondary);
+  border: none;
+}
+
+.card-header {
+  border-bottom: none;
 }
 
 .card-two {
@@ -160,7 +165,7 @@ main {
 }
 
 .card-three {
-  margin: 0 0 20px 0;
+  margin: 0 0 2px 0;
   border: 3px solid var(--secondary);
   border-radius: var(--border-radius);
 }
@@ -169,7 +174,6 @@ main {
   color: var(--secondary);
   background-color: var(--primary);
   padding: 3%;
-  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
 }
 
 .card-body {
@@ -177,14 +181,6 @@ main {
 }
 
 .weather-card {
-  background-color: var(--tertiary);
-  color: var(--secondary);
-  padding: 3%;
-  border-radius: calc(0.18rem - 1px) calc(0.18rem - 1px) 0 0;
-}
-
-
-.weather-card-two {
   background-color: var(--tertiary);
   color: var(--secondary);
   padding: 3%;
