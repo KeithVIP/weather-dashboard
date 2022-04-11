@@ -7,7 +7,7 @@ var weatherContainerEl = document.querySelector("#weather-contrainer")
 
 
 function fetchCoords(search) {
-  var apiUrl1 = "http://api.openweathermap.org/geo/1.0/direct?q=" + search + "&appid=" + apiKey
+  var apiUrl1 = "https://api.openweathermap.org/geo/1.0/direct?q=" + search + "&appid=" + apiKey
   fetch(apiUrl1)
   .then(function (response) {
     return response.json()
