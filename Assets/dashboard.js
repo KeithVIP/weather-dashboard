@@ -2,7 +2,7 @@ var searchInput = document.getElementById("city")
 var apiKey = "049bec33df8fdbc63240a744ec8c1088"
 var lon; 
 var lat;
-var searchHistory = JSON.parse(localStorage.getItem("recentCities")) || []
+//var searchHistory = JSON.parse(localStorage.getItem("recentCities")) || []
 var weatherContainerEl = document.querySelector("#weather-contrainer")
 
 
@@ -79,6 +79,5 @@ document.getElementById("searchButton").addEventListener("click", function(event
     event.preventDefault();
     fetchCoords(searchInput.value)
 
-    
     
 });
